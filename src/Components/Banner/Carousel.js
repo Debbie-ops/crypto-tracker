@@ -8,7 +8,7 @@ import AliceCarousel from 'react-alice-carousel';
 import { Link } from 'react-router-dom';
 
 
-//carousel specs
+//carousel specs changed
 //const StyledCarousel = styled('div')({
   //height: '50%', 
   //display: 'flex',

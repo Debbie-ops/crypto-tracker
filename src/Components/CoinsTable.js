@@ -70,7 +70,7 @@ const CoinsTable = () => {
 
   const { currency, symbol } = useCrypto();
 
-  // Function to fetch the coins and destructure data
+  //Function to fetch the coins and destructure data
   const fetchCoins = async (currency, setCoins, setLoading) => {
     setLoading(true);
     try {

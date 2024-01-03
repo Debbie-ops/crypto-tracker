@@ -3,7 +3,7 @@ import { useCrypto } from '../CryptoContext';
 import { HistoricalChart } from '../config/api';
 import axios from 'axios';
 import { CircularProgress, ThemeProvider, styled, createTheme } from '@mui/material';
-import Chart from 'chart.js/auto'; // Import Chart.js
+import Chart from 'chart.js/auto'; 
 import SelectButton from './SelectButton';
 import { chartDays } from '../config/data';
 

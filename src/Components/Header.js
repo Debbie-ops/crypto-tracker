@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
-import { useCrypto } from '../CryptoContext'; // Corrected import
+import { useCrypto } from '../CryptoContext'; 
 
 const StyledAppBar = styled(AppBar)({
   '& .MuiTypography-root': {

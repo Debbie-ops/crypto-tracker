@@ -18,7 +18,7 @@ const CoinPage = () => {
 
   const { currency, symbol } = useCrypto();
 
-  // caching logic
+  // caching logic created
   const fetchCoin = useCallback(async () => {
     try {
       const cachedCoinData = localStorage.getItem(`coin_${id}`);
