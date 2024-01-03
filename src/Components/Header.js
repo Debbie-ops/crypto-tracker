@@ -23,7 +23,7 @@ const StyledAppBar = styled(AppBar)({
 
 const Header = () => {
   const navigate = useNavigate();
-  const { currency, symbol, setCurrency } = useCrypto();
+  const { currency, setCurrency } = useCrypto();
 
   const darkTheme = createTheme({
     palette: {

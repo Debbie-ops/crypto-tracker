@@ -12,31 +12,31 @@ const CoinInfo = ({ coin }) => {
   const [days, setDays] = useState(1);
   const { currency } = useCrypto();
   const [flag, setFlag] = useState(false);
-
-  const chartContainer = useRef(null); // Ref for the chart container
-
-  const fetchHistoricData = async () => {
-    const cacheKey = `historicData_${coin.id}_${days}_${currency}`;
-    const cachedData = localStorage.getItem(cacheKey);
-
-    if (cachedData) {
-      setFlag(true);
-      setHistoricData(JSON.parse(cachedData));
-    } else {
-      try {
-        const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
-        setFlag(true);
-        setHistoricData(data.prices);
-        localStorage.setItem(cacheKey, JSON.stringify(data.prices));
-      } catch (error) {
-        console.error('Error fetching historic data:', error);
-      }
-    }
-  };
+  const chartContainer = useRef(null); 
 
   useEffect(() => {
+    const fetchHistoricData = async () => {
+      const cacheKey = `historicData_${coin.id}_${days}_${currency}`;
+      const cachedData = localStorage.getItem(cacheKey);
+
+      if (cachedData) {
+        setFlag(true);
+        setHistoricData(JSON.parse(cachedData));
+      } else {
+        try {
+          const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
+          setFlag(true);
+          setHistoricData(data.prices);
+          localStorage.setItem(cacheKey, JSON.stringify(data.prices));
+        } catch (error) {
+          console.error('Error fetching historic data:', error);
+        }
+      }
+    };
+
     fetchHistoricData();
   }, [coin.id, days, currency]);
+
 
   useEffect(() => {
     let chartInstance = null;

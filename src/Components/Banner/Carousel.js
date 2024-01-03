@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { styled } from '@mui/system';
+//import { styled } from '@mui/system';
 import axios from 'axios';
-import { TrendingCoins } from '../../config/api';
+//import { TrendingCoins } from '../../config/api';
 import { useCrypto } from '../../CryptoContext'; 
 import { useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 
 
 //carousel specs
-const StyledCarousel = styled('div')({
-  height: '50%', 
-  display: 'flex',
-  alignItems: 'center',
-},
+//const StyledCarousel = styled('div')({
+  //height: '50%', 
+  //display: 'flex',
+  //alignItems: 'center',
+//},
 
-);
+//);
 
 //REGEX to break number into commas
 export function numberWithCommas(x) {
@@ -36,7 +36,7 @@ const Classes = {
 //getting from api endpoint
 const Carousel = () => {
   const [trendingData, setTrendingData] = useState([]);
-  const { currency, symbol } = useCrypto();
+  const {  symbol } = useCrypto();
 
 //caching logic
 useEffect(() => {
@@ -62,15 +62,15 @@ useEffect(() => {
 }, []);
 
   //initial data fetching 
-  const fetchTrendingCoins = async (currency) => {
-    try {
-      const { data } = await axios.get(TrendingCoins(currency));
-      return data;
-    } catch (error) {
-      console.error('Error fetching trending coins:', error);
-      return [];
-    }
-  };
+  //const fetchTrendingCoins = async (currency) => {
+    //try {
+      //const { data } = await axios.get(TrendingCoins(currency));
+      //return data;
+    //} catch (error) {
+      //console.error('Error fetching trending coins:', error);
+      //return [];
+    //}
+  //};
 //fetching using setupProxy
   useEffect(() => {
     axios

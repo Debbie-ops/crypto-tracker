@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CoinList } from '../config/api';
 import { useCrypto } from '../CryptoContext';
 import axios from 'axios';
-import { ThemeProvider, Typography, createTheme, Container, TextField, TableContainer, LinearProgress, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
+import { ThemeProvider, Typography, createTheme, Container, TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { numberWithCommas } from './Banner/Carousel';
 import { styled } from '@mui/system';
@@ -91,10 +91,11 @@ const CoinsTable = () => {
     const cachedCoinsData = localStorage.getItem('cachedCoinsData');
     if (cachedCoinsData) {
       setCoins(JSON.parse(cachedCoinsData));
+      setLoading(false);
     } else {
       fetchCoins(currency, setCoins, setLoading);
     }
-  }, [currency]);
+  }, [currency, setLoading]);
 
   //Function to filter coins based on search
   const handleSearch = () => {

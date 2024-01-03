@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCrypto } from '../CryptoContext';
 import { SingleCoin } from '../config/api';
@@ -10,6 +10,7 @@ import { LinearProgress, Typography } from '@mui/material';
 import { numberWithCommas } from '../Components/Banner/Carousel';
 import HtmlReactParser from 'html-react-parser';
 
+
 const CoinPage = () => {
   const theme = useTheme();
   const { id } = useParams();
@@ -18,7 +19,7 @@ const CoinPage = () => {
   const { currency, symbol } = useCrypto();
 
   // caching logic
-  const fetchCoin = async () => {
+  const fetchCoin = useCallback(async () => {
     try {
       const cachedCoinData = localStorage.getItem(`coin_${id}`);
       if (cachedCoinData) {
@@ -31,11 +32,15 @@ const CoinPage = () => {
     } catch (error) {
       console.error('Error fetching coin:', error);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
-    fetchCoin();
-  }, [id]);
+    const fetchData = async () => {
+      await fetchCoin();
+    };
+    fetchData();
+  }, [fetchCoin, id]);
+  
 
   const Sidebar = styled('div')`
     width: 350px;
