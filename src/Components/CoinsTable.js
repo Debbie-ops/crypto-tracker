@@ -62,7 +62,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); //to manage loading state
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -95,7 +95,7 @@ const CoinsTable = () => {
     } else {
       fetchCoins(currency, setCoins, setLoading);
     }
-  }, [currency, setLoading]);
+  }, [currency, loading, setLoading]);
 
   //Function to filter coins based on search
   const handleSearch = () => {
