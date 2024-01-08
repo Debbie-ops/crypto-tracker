@@ -47,7 +47,7 @@ const StyledBannerContent = styled(Container)({
                     marginTop: -20,
                 }}
                 >
-                    All the information you need on Crypto Currencies
+                    All the information you need on Crypto Currencies, highlighting an increase or decrease in its value! 
                 </Typography>
                 <div style={{ height: 50 }} /> {/*space between subtitle and carousel*/}
                 <Carousel />

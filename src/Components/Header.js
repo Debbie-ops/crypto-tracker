@@ -10,6 +10,8 @@ import {
 import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import { useCrypto } from '../CryptoContext'; 
+import AuthModal from './Authentication/AuthModal';
+import UserSidebar from "./Authentication/UserSidebar";
 
 const StyledAppBar = styled(AppBar)({
   '& .MuiTypography-root': {
@@ -23,7 +25,7 @@ const StyledAppBar = styled(AppBar)({
 
 const Header = () => {
   const navigate = useNavigate();
-  const { currency, setCurrency } = useCrypto();
+  const { currency, setCurrency, user } = useCrypto();
 
   const darkTheme = createTheme({
     palette: {
@@ -32,7 +34,8 @@ const Header = () => {
   });
 
   const handleCurrencyChange = (e) => {
-    setCurrency(e.target.value);
+    const selectedCurrency = e.target.value;
+    setCurrency(selectedCurrency);
   };
 
   return (
@@ -59,8 +62,9 @@ const Header = () => {
               onChange={handleCurrencyChange}
             >
               <option value={'USD'}>USD</option>
-              <option value={'ZAR'}>ZAR</option>
+              <option value={'ZMW'}>ZMW</option>
             </select>
+            {user ? <UserSidebar /> : <AuthModal/>}
           </Toolbar>
         </Container>
       </StyledAppBar>

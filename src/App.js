@@ -5,6 +5,7 @@ import Homepage from './Pages/Homepage';
 import CoinPage from './Pages/CoinPage';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Alert from './Components/Alert';
 
 // Create a styled component for the App container
 const CustomStyledComponent = styled(Box)({
@@ -23,6 +24,7 @@ function App() {
           <Route path="/coins/:id" element={<CoinPage />} />
         </Routes>
       </CustomStyledComponent>
+      <Alert/>
     </BrowserRouter>
   );
 }
